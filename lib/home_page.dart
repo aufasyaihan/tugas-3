@@ -29,7 +29,27 @@ class _HomePageState extends State<HomePage> {
         title: const Text('Home Page'),
       ),
       body: Center(
-        child: Text('Selamat Datang, $namauser'),
+        child: Padding(
+          // Add padding around the content
+          padding: const EdgeInsets.fromLTRB(30, 30, 30, 600),
+          child: Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              color: Colors.white,
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.black12,
+                  offset: Offset(0, 2),
+                  blurRadius: 4,
+                ),
+              ],
+            ),
+            child: Center(
+              child: Text('Selamat Datang, $namauser'),
+            ),
+          ),
+        ),
       ),
       drawer: const Sidemenu(),
     );

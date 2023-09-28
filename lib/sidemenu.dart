@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pert3/about_page.dart';
 import 'package:pert3/home_page.dart';
 import 'package:pert3/login_page.dart';
+import 'package:pert3/profile.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Sidemenu extends StatelessWidget {
@@ -19,8 +20,26 @@ class Sidemenu extends StatelessWidget {
     return Drawer(
       child: ListView(
         children: [
-          const DrawerHeader(
-            child: Text('Sidemenu'),
+          Container(
+            color: Colors.lightBlue,
+            child: const DrawerHeader(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Praktikum Pemrograman Mobile',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      'Ini adalah tugas 3 dari praktikum pemrograman mobile',
+                      style: TextStyle(color: Colors.white, fontSize: 14),
+                    ),
+                  ]),
+            ),
           ),
           ListTile(
             leading: const Icon(Icons.home),
@@ -44,6 +63,19 @@ class Sidemenu extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const AboutPage(),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.person),
+            title: const Text('Profile'),
+            onTap: () {
+              // Navigasi ke halaman About
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const Profile(),
                 ),
               );
             },

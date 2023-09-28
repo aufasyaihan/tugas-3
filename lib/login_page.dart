@@ -22,12 +22,54 @@ class _LoginPageState extends State<LoginPage> {
     prefs.setString('username', _usernameController.text);
   }
 
-  _showInput(namacontroller, placeholder, isPassword) {
-    return TextField(
-      controller: namacontroller,
-      obscureText: isPassword,
-      decoration: InputDecoration(
-        hintText: placeholder,
+  _showInputUser(namacontroller, placeholder, isPassword) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: Colors.white,
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black12,
+            offset: Offset(0, 2),
+            blurRadius: 4,
+          ),
+        ],
+      ),
+      child: TextField(
+        controller: namacontroller,
+        obscureText: isPassword,
+        decoration: InputDecoration(
+            hintText: placeholder,
+            border: InputBorder.none,
+            icon: const Icon(Icons.person)),
+      ),
+    );
+  }
+
+  _showInputPass(namacontroller, placeholder, isPassword) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: Colors.white,
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black12,
+            offset: Offset(0, 2),
+            blurRadius: 4,
+          ),
+        ],
+      ),
+      child: TextField(
+        controller: namacontroller,
+        obscureText: isPassword,
+        decoration: InputDecoration(
+            hintText: placeholder,
+            border: InputBorder.none,
+            icon: const Icon(Icons.lock)),
       ),
     );
   }
@@ -61,21 +103,24 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              'LOGIN',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.black, // Text color
+            const Center(
+              child: Text(
+                'Pemrograman Mobile',
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black, // Text color
+                ),
               ),
             ),
             const SizedBox(height: 10),
-            _showInput(_usernameController, 'Masukkan Username', false),
-            _showInput(_passwordController, 'Masukkan Password', true),
+            _showInputUser(_usernameController, 'Masukkan Username', false),
+            _showInputPass(_passwordController, 'Masukkan Password', true),
+            const SizedBox(height: 15),
             ElevatedButton(
                 onPressed: () {
-                  if (_usernameController.text == 'admin' &&
-                      _passwordController.text == 'admin') {
+                  if (_usernameController.text == 'aufa' &&
+                      _passwordController.text == 'aufaganteng') {
                     // save username
                     _saveUsername();
                     // show alert
@@ -86,7 +131,10 @@ class _LoginPageState extends State<LoginPage> {
                         'Username atau Password anda Salah', const LoginPage());
                   }
                 },
-                child: const Text('Login'))
+                child: const Text('Login',
+                    style: TextStyle(
+                      fontSize: 20,
+                    )))
           ],
         ),
       ),
